@@ -15,7 +15,7 @@ export default function UserSubscriberForm() {
             />
             <Button
                 label="Submit"
-                size="small"
+                size="xs"
                 buttonType="submit"
                 onClick={() => console.log("Submit")}
             />
