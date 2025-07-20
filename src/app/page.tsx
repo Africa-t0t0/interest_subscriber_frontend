@@ -1,17 +1,13 @@
-import List from "@/components/List";
+import Dashboard from "@/components/containers/Dashboard";
 
-
-export default async function Home() {
-
+export default function Home() {
 
   return (
-    <main className="flex flex-col items-center justify-center bg-gray-100 space-y-6">
+    <main className="min-h-screen bg-gray-100 p-8 space-y-8">
       <h1 className="text-4xl font-bold text-slate-950">
         Interest Subscriber
       </h1>
-      <div>
-        <List />
-      </div>
+      <Dashboard />
     </main>
   );
 };
