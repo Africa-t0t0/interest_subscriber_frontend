@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { InterestProvider } from "@/context/InterestContext";
+import { EventProvider } from "@/context/EventContext";
 import Sidebar from "@/components/core/Sidebar";
 
 import "./globals.css";
@@ -32,12 +33,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 text-slate-900`}
       >
         <InterestProvider>
+          <EventProvider>
           <div className="flex mon-h-screen">
             <Sidebar />
             <main className="p-4">
               {children}
             </main>
           </div>
+          </EventProvider>
         </InterestProvider>
       </body>
     </html>

@@ -22,7 +22,7 @@ export function InterestProvider({ children }: { children: React.ReactNode}) {
     const [interests, setInterests] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/api/interests")
+        fetch("http://localhost:3001/interests-api/interests")
             .then(res => res.json())
             .then(data => setInterests(data))
             .catch(console.error);
