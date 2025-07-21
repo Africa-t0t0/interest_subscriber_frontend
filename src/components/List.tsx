@@ -7,14 +7,14 @@ import Table from "./core/Table";
 
 export default function List() {
 
-  const { interests } = useInterests();
+  const { userInterests } = useInterests();
   const { events } = useEvents();
 
-  console.log("events", events);
+  console.log("interests", userInterests);
 
   const listContent = (
     <div className="m2 space-y-2">
-      {interests.map((interest: any, index: number) => (
+      {userInterests.map((interest: any, index: number) => (
 
         <div
           key={index}

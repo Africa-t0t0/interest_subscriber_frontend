@@ -1,5 +1,6 @@
 "use client";
 
+import { fetchWithAuth } from "@/utils/fetchWithAuth";
 import { createContext, useState, useEffect, useContext, Dispatch, SetStateAction } from "react";
 
 interface IEvent {
@@ -26,7 +27,9 @@ export function EventProvider({ children }: { children: React.ReactNode }) {
     const [events, setEvents] = useState<IEvent[]>([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/events-api/events")
+        const response = fetchWithAuth("http://localhost:3001/events-api/events");
+
+        response
             .then(res => res.json())
             .then(data => setEvents(data))
             .catch(console.error);

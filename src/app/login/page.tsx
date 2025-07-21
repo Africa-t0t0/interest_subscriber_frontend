@@ -12,7 +12,7 @@ export default function LoginPage () {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const response = await fetch("http://localhost:3001/login", {
+        const response = await fetch("http://localhost:3001/auth-api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export default function LoginPage () {
         if (response.ok) {
             const { token } = await response.json();
             localStorage.setItem("token", token);
-
+            console.log("success!")
             router.push("/dashboard");
         } else {
             alert("Invalid credentials");
