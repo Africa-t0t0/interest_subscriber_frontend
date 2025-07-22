@@ -12,9 +12,15 @@ export default function List() {
 
   console.log("interests", userInterests);
 
-  const listContent = (
-    <div className="m2 space-y-2">
-      {userInterests.map((interest: any, index: number) => (
+  let content = null;
+
+  if (userInterests.length === 0) {
+    content = (
+      <p>No interests found for user!</p>
+    );
+  } else {
+    content = (
+      userInterests.map((interest: any, index: number) => (
 
         <div
           key={index}
@@ -44,7 +50,13 @@ export default function List() {
             />
           </div>
         </div>
-      ))}
+      ))
+    );
+  }
+
+  const listContent = (
+    <div className="m2 space-y-2">
+      {content}
     </div>
   );
 

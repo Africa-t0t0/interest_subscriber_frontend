@@ -5,11 +5,10 @@ import SearchableCheckbox from "../core/SearchableCheckbox";
 import { useInterests } from "@/context/InterestContext";
 import { fetchWithAuth } from "@/utils/fetchWithAuth";
 
-import { differenceById } from "@/utils/utils";
 
 export default function UserSubscriberForm() {
 
-    const { interests, userInterests } = useInterests();
+    const { interests, userInterests, setUserInterests } = useInterests();
     const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
 
     const handleSelectedInterestsChange = (selected: string[]) => {
@@ -20,34 +19,45 @@ export default function UserSubscriberForm() {
         e.preventDefault();
 
         try {
+            let method = "PATCH";
+
+            if (selectedInterests.length === 0) {
+                method = "POST";
+            }
+
             const response = await fetchWithAuth("http://localhost:3001/interests-api/user-interests", {
-                method: "POST",
+                method: method,
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ interests: selectedInterests }),
             });
+
             if (!response) return;
             const data = await response.json();
-            console.log(data);
+
+            setUserInterests(data);
         } catch (error) {
             console.error(error);
         }
     };
 
-    const cleanedSelectOptions = differenceById(interests, userInterests);
-    console.log("cleaned se", cleanedSelectOptions)
+    const cleanedUserInterests = userInterests?.length ? userInterests.map((i: any) => i._id) : [];
+
     const content = (
         <form onSubmit={handleSubmit}>
             <SearchableCheckbox
-                options={cleanedSelectOptions}
+                options={interests}
+                defaultSelected={cleanedUserInterests}
                 onChange={handleSelectedInterestsChange}
             />
-            <Button
-                label="Submit"
-                size="xs"
-                buttonType="submit"
-            />
+            <div className="flex justify-center pt-2">
+                <Button
+                    label="Submit"
+                    size="xs"
+                    buttonType="submit"
+                />
+            </div>
         </form>
     );
 

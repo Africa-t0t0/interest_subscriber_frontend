@@ -1,7 +1,4 @@
-"use client";
-
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 type Option = {
     _id: string;
@@ -11,18 +8,22 @@ type Option = {
 type SearchableCheckboxProps = {
     options: Option[];
     onChange?: (selected: string[]) => void;
+    defaultSelected?: string[];
 };
 
 export default function SearchableCheckbox({
     options,
     onChange,
+    defaultSelected = [],
 }: SearchableCheckboxProps) {
     const [search, setSearch] = useState("");
-    const [selected, setSelected] = useState<string[]>([]);
+    const [selected, setSelected] = useState<string[]>(defaultSelected);
+
+
 
     let filteredOptions: Option[] = options;
 
-    if (options.length > 0 && search !== "" ) {
+    if (options.length > 0 && search !== "") {
         filteredOptions = options.filter((opt) =>
             opt?.name?.toLowerCase()?.includes(search.toLowerCase())
         );
@@ -47,22 +48,22 @@ export default function SearchableCheckbox({
                 className="w-full p-2 border border-gray-300 rounded"
             />
 
-<div className="mt-2 max-h-48 overflow-y-auto space-y-1 border rounded p-2">
-  {filteredOptions.length === 0 ? (
-    <div className="text-gray-500 text-sm">No hay resultados</div>
-  ) : (
-    filteredOptions.map((option) => (
-      <label key={option._id} className="flex items-center gap-2 text-sm">
-        <input
-          type="checkbox"
-          checked={selected.includes(option._id)}
-          onChange={() => toggleSelect(option._id)}
-        />
-        {option.name}
-      </label>
-    ))
-  )}
-</div>
+            <div className="mt-2 max-h-48 overflow-y-auto space-y-1 border rounded p-2">
+                {filteredOptions.length === 0 ? (
+                    <div className="text-gray-500 text-sm">No hay resultados</div>
+                ) : (
+                    filteredOptions.map((option) => (
+                        <label key={option._id} className="flex items-center gap-2 text-sm">
+                            <input
+                                type="checkbox"
+                                checked={selected.includes(option._id)}
+                                onChange={() => toggleSelect(option._id)}
+                            />
+                            {option.name}
+                        </label>
+                    ))
+                )}
+            </div>
         </div>
     );
 }

@@ -29,7 +29,7 @@ export default function Button({
         }
     };
 
-    const baseClasses = 'bg-blue-500 hover:bg-blue-600 text-white font-bold rounded transition-colors duration-200';
+    const baseClasses = 'bg-black hover:bg-gray-600 text-white font-bold rounded transition-colors duration-200';
     const sizeClass = sizeClasses[size] || sizeClasses['md'];
     const buttonClasses = `${baseClasses} ${sizeClass} ${className}`.trim();
 
