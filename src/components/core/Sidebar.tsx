@@ -1,13 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Sidebar() {
     const navbarContent = (
         <aside className="bg-black text-white w-60 min-h-screen p-4 space-y-4">
-            <h2 className="text-2xl font-bold mb-6">Interest</h2>
+            <div className="mb-6 flex justify-center">
+                <Image
+                    src="/icon_white.png"
+                    alt="Interest Logo"
+                    width={100}
+                    height={30}
+                    className="object-contain"
+                />
+            </div>
             <nav className="flex flex-col space-y-2">
-                <Link href="/dashboard">Dashboard</Link>
+                <li
+                    className="flex justify-center items-center"
+                >
+                    <Link href="/dashboard">Dashboard</Link>
+                </li>
             </nav>
         </aside>
     );
