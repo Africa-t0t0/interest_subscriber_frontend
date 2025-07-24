@@ -5,7 +5,7 @@ import { InterestProvider } from "@/context/InterestContext";
 import { EventProvider } from "@/context/EventContext";
 import Sidebar from "@/components/core/Sidebar";
 
-import "./globals.css";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

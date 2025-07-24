@@ -11,9 +11,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      router.push("/login");
+      router.push("/auth/login");
     } else {
-      setTokenChecked(true); // Solo se muestra contenido si hay token
+      setTokenChecked(true);
     }
   }, [router]);
 
