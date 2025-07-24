@@ -30,7 +30,13 @@ export function EventProvider({ children }: { children: React.ReactNode }) {
         const response = fetchWithAuth("http://localhost:3001/events-api/events");
 
         response
-            .then(res => res.json())
+            .then(res => {
+                if (res) {
+                    return res.json()
+                } else {
+                    return [];
+                }
+            })
             .then(data => setEvents(data))
             .catch(console.error);
     }, []);
