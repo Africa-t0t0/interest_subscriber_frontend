@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { getInteresectionOfArrays } from "@/utils/utils";
+import { useEffect, useState } from "react";
 
 type Option = {
     _id: string;
@@ -17,9 +18,7 @@ export default function SearchableCheckbox({
     defaultSelected = [],
 }: SearchableCheckboxProps) {
     const [search, setSearch] = useState("");
-    const [selected, setSelected] = useState<string[]>(defaultSelected);
-
-
+    const [selected, setSelected] = useState<string[]>(defaultSelected ?? []);
 
     let filteredOptions: Option[] = options;
 
@@ -38,6 +37,14 @@ export default function SearchableCheckbox({
         onChange?.(updated);
     };
 
+    console.log("selected", selected)
+    useEffect(() => {
+        if (selected.length === 0 && (defaultSelected?.length ?? 0) > 0) {
+            setSelected(defaultSelected ?? []);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [defaultSelected]);
+
     return (
         <div className="w-full max-w-md space-y-4 p-4 bg-white rounded-lg shadow">
             <input
@@ -50,7 +57,7 @@ export default function SearchableCheckbox({
 
             <div className="mt-2 max-h-48 overflow-y-auto space-y-1 border rounded p-2">
                 {filteredOptions.length === 0 ? (
-                    <div className="text-gray-500 text-sm">No hay resultados</div>
+                    <div className="text-gray-500 text-sm">No results</div>
                 ) : (
                     filteredOptions.map((option) => (
                         <label key={option._id} className="flex items-center gap-2 text-sm">

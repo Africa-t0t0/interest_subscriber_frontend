@@ -20,11 +20,9 @@ export default function UserSubscriberForm() {
 
         try {
             let method = "PATCH";
-
-            if (selectedInterests.length === 0) {
+            if (userInterests.length === 0) {
                 method = "POST";
             }
-
             const response = await fetchWithAuth("http://localhost:3001/interests-api/user-interests", {
                 method: method,
                 headers: {

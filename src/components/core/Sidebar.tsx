@@ -19,7 +19,9 @@ export default function Sidebar() {
                 <li
                     className="flex justify-center items-center"
                 >
-                    <Link href="/dashboard">Dashboard</Link>
+                    <span className="text-white hover:text-gray-300 cursor-pointer">
+                        <Link href="/dashboard">Dashboard</Link>
+                    </span>
                 </li>
             </nav>
         </aside>
