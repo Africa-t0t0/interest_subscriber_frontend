@@ -46,7 +46,7 @@ export default function SearchableCheckbox({
     }, [defaultSelected]);
 
     return (
-        <div className="w-full max-w-md space-y-4 p-4 bg-white rounded-lg shadow">
+        <div className="w-full space-y-4 p-4 bg-white rounded-lg shadow">
             <input
                 type="text"
                 placeholder="Search..."
