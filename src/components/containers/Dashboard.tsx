@@ -2,6 +2,7 @@
 
 import List from "@/components/List";
 import UserSubscriberForm from "../forms/UserSubscriberForm";
+import Calendar from "../core/Calendar";
 
 export default function Dashboard() {
 
@@ -13,8 +14,8 @@ export default function Dashboard() {
                     <UserSubscriberForm />
                 </div>
                 <div className="w-1/2 bg-white rounded-lg shadow p-4">
-                    <h2 className="text-lg font-semibold text-center">Panel Derecho</h2>
-
+                    <h2 className="text-lg font-semibold text-center">Upcoming Events</h2>
+                    <Calendar />
                 </div>
             </div>
 
