@@ -43,7 +43,7 @@ export default function UserSubscriberForm() {
     const cleanedUserInterests = userInterests?.length ? userInterests.map((i: any) => i._id) : [];
 
     const content = (
-        <form onSubmit={handleSubmit}>
+        <form className="w-full h-full flex flex-col" onSubmit={handleSubmit}>
             <SearchableCheckbox
                 options={interests}
                 defaultSelected={cleanedUserInterests}
