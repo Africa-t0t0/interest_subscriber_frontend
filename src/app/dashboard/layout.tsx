@@ -35,7 +35,7 @@ export default function RootLayout({
           <EventProvider>
           <div className="flex mon-h-screen">
             <Sidebar />
-            <main className="p-4">
+            <main className="p-4 w-full">
               {children}
             </main>
           </div>

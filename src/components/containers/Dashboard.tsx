@@ -7,7 +7,7 @@ import Calendar from "../core/Calendar";
 export default function Dashboard() {
 
     const dashboardContent = (
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-6 w-full">
             <div className="flex gap-4">
                 <div className="w-1/2 bg-white rounded-lg shadow p-4">
                     <h2 className="text-lg font-semibold text-center">Subscribe to Events</h2>
