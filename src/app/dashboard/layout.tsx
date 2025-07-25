@@ -28,7 +28,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 text-slate-900`}
       >
@@ -43,6 +42,5 @@ export default function RootLayout({
           </EventProvider>
         </InterestProvider>
       </body>
-    </html>
   );
 }

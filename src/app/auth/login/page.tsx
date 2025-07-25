@@ -34,25 +34,6 @@ export default function LoginPage () {
     };
 
     return (
-        // <form onSubmit={handleLogin} className="max-w-md mx-auto mt-10 space-y-4">
-        //   <input
-        //     type="email"
-        //     placeholder="Email"
-        //     value={email}
-        //     onChange={(e) => setEmail(e.target.value)}
-        //     className="border p-2 w-full"
-        //   />
-        //   <input
-        //     type="password"
-        //     placeholder="Password"
-        //     value={password}
-        //     onChange={(e) => setPassword(e.target.value)}
-        //     className="border p-2 w-full"
-        //   />
-        //   <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-        //     Login
-        //   </button>
-        // </form>
         <LoginForm
             handleLogin={handleLogin}
             setEmail={setEmail}
